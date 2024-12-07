@@ -245,38 +245,38 @@ interface EventHandlerInterface
 
 ### **Tóm Tắt Kiến Trúc Module Structure**
 
-Module structure được thiết kế dựa trên các nguyên tắc kiến trúc phần mềm hiện đại nhằm tạo nên một hệ thống **dễ bảo trì, mở rộng và linh hoạt**. Các concept cốt lõi được áp dụng như sau:
+Module structure được thiết kế dựa trên các nguyên tắc kiến trúc phần mềm hiện đại nhằm tạo nên một hệ thống **dễ bảo trì, mở rộng và linh hoạt**. Các concept cốt lõi được áp dụng như sau:
 
 * * * * *
 
 ### **1\. Ports and Adapters Architecture**
 
--   **Ports** (Contracts/Interfaces): Định nghĩa cách hệ thống tương tác với các công cụ bên ngoài, đảm bảo Application Core không phụ thuộc vào implementation cụ thể.
--   **Adapters** (Infrastructure): Hiện thực hóa Ports, kết nối với các công cụ như database (`EloquentCourseWriteRepository`) hay message queue (`RabbitMQCommandBus`).
+-   **Ports** (Contracts/Interfaces): Định nghĩa cách hệ thống tương tác với các công cụ bên ngoài, đảm bảo Application Core không phụ thuộc vào implementation cụ thể.
+-   **Adapters** (Infrastructure): Hiện thực hóa Ports, kết nối với các công cụ như database (`EloquentCourseWriteRepository`) hay message queue (`RabbitMQCommandBus`).
 
 * * * * *
 
 ### **2\. Domain-Driven Design (DDD)**
 
 -   **Domain Layer**:
-    -   **Entities**: Thực thể miền, đại diện cho dữ liệu và logic chính (e.g., `Course`).
-    -   **Value Objects**: Thuộc tính bất biến như `CourseId` đảm bảo tính toàn vẹn dữ liệu.
-    -   **Domain Events**: Quản lý thay đổi trong miền (e.g., `CourseCreatedEvent`).
-    -   **Domain Services**: Xử lý logic phức tạp, không thuộc về một thực thể nào (e.g., `ScheduleValidationService`).
+    -   **Entities**: Thực thể miền, đại diện cho dữ liệu và logic chính (e.g., `Course`).
+    -   **Value Objects**: Thuộc tính bất biến như `CourseId` đảm bảo tính toàn vẹn dữ liệu.
+    -   **Domain Events**: Quản lý thay đổi trong miền (e.g., `CourseCreatedEvent`).
+    -   **Domain Services**: Xử lý logic phức tạp, không thuộc về một thực thể nào (e.g., `ScheduleValidationService`).
 
 * * * * *
 
 ### **3\. Command-Query Responsibility Segregation (CQRS)**
 
--   **Commands**: Xử lý các thao tác write (e.g., `CreateCourseCommand`).
--   **Queries**: Đọc dữ liệu (e.g., `SearchCoursesQuery`).
+-   **Commands**: Xử lý các thao tác write (e.g., `CreateCourseCommand`).
+-   **Queries**: Đọc dữ liệu (e.g., `SearchCoursesQuery`).
 -   **Handlers**: Tách riêng logic xử lý của Commands và Queries.
 
 * * * * *
 
 ### **4\. Event-Driven Architecture (EDA)**
 
--   **Event Bus**: Trung gian phân phối các sự kiện giữa các module (e.g., `EventDispatcher`).
+-   **Event Bus**: Trung gian phân phối các sự kiện giữa các module (e.g., `EventDispatcher`).
 -   **Event Handlers**: Xử lý các side effects như gửi email (`SendEmailOnCourseCreated`) hoặc cập nhật cache.
 
 * * * * *
@@ -293,8 +293,8 @@ Module structure được thiết kế dựa trên các nguyên tắc kiến tr�
 
 ### **6\. Componentization**
 
--   **Package by Component**: Phân tách code theo domain hoặc feature (e.g., `course-management-module`).
--   **Shared Kernel**: Chia sẻ các thành phần tái sử dụng như `BaseEvent`, `BaseRepositoryInterface`.
+-   **Package by Component**: Phân tách code theo domain hoặc feature (e.g., `course-management-module`).
+-   **Shared Kernel**: Chia sẻ các thành phần tái sử dụng như `BaseEvent`, `BaseRepositoryInterface`.
 
 * * * * *
 
@@ -302,6 +302,6 @@ Module structure được thiết kế dựa trên các nguyên tắc kiến tr�
 
 Đây là một kiến trúc hiện đại, phù hợp cho các dự án phức tạp và yêu cầu phát triển lâu dài.
 
-Cấu trúc module này kết hợp các nguyên tắc **Ports & Adapters**, **DDD**, **CQRS**, và **EDA** để đạt được các lợi ích gì?
+Cấu trúc module này kết hợp Service-Oriented Architecture, Event Sourcing, Polyglot Persistence, Command Bus, Shared Kernel, **Hexagonal Architecture**, **DDD**, **CQRS**, và **EDA** để đạt được các lợi ích gì?
 
 ```
