@@ -51,6 +51,12 @@ class AddCourseModuleHandler implements CommandHandlerInterface
         );
 
         $course->addModule($newModule);
+        // Việc sử dụng CourseModuleRepository là một ý tưởng tồi vì:
+        // - Phá vỡ nguyên tắc Aggregates: Vi phạm tính toàn vẹn của Aggregate Root.
+        // - Mất tính nhất quán: Dữ liệu có thể thay đổi không kiểm soát.
+        // - Single Source of Truth: Gây mâu thuẫn giữa các trạng thái dữ liệu.
+        // - Tăng độ phức tạp: Phân tán logic giữa Aggregate và repository.
+        // - Giảm tính kết dính: Tách biệt một phần phụ thuộc chặt chẽ ra khỏi ngữ cảnh của nó.
 
         // Persist changes using Unit of Work
         $this->courseRepo->beginTransaction();
