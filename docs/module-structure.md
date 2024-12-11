@@ -1,6 +1,7 @@
 Dưới đây là cấu trúc module “Quản lý khóa học” (Course Management)
 
 ```plaintext
+Cấu trúc module này kết hợp Service-Oriented Architecture, Event Sourcing, Polyglot Persistence, Command Bus, Shared Kernel, **Hexagonal Architecture**, **DDD**, **CQRS**, và **EDA** để đạt được các lợi ích gì?
 course-management-module/
 ├── composer.json                  // Dependency configuration, autoloading Qtvhao\CourseManagement namespace
 ├── docs/
@@ -302,6 +303,5 @@ Module structure được thiết kế dựa trên các nguyên tắc kiến tr�
 
 Đây là một kiến trúc hiện đại, phù hợp cho các dự án phức tạp và yêu cầu phát triển lâu dài.
 
-Cấu trúc module này kết hợp Service-Oriented Architecture, Event Sourcing, Polyglot Persistence, Command Bus, Shared Kernel, **Hexagonal Architecture**, **DDD**, **CQRS**, và **EDA** để đạt được các lợi ích gì?
 
 ```
