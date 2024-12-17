@@ -4,7 +4,6 @@ flowchart
     subgraph Application Layer
         CreateCourseHandler[CreateCourseHandler]
         CreateCourseCommand[CreateCourseCommand]
-        EventDispatcher[EventDispatcher]
     end
 
     %% Domain Layer
@@ -13,7 +12,6 @@ flowchart
         CourseAggregate[CourseAggregate]
         CourseWriteRepository[CourseWriteRepositoryInterface]
         CourseReadRepository[CourseReadRepositoryInterface]
-        CourseCreatedEvent[CourseCreatedEvent]
     end
 
     %% Infrastructure Layer
@@ -29,13 +27,11 @@ flowchart
 
     %% Dependencies of CreateCourseHandler
     CreateCourseCommand -->|"CommandBusInterface"| CreateCourseHandler
-    CreateCourseHandler -->|"getByUuid() save()"| CourseWriteRepository
+    CreateCourseHandler -->|"getByUuid()"| CourseWriteRepository
+    CreateCourseHandler -->|"save()"| CourseWriteRepository
     CreateCourseHandler -->|"getByUuid()"| CourseReadRepository
     CourseEntity --> CourseReadRepository
     CourseWriteRepository --> CourseAggregate
-
-    %% Event Flow
-    CourseCreatedEvent -->  CourseAggregate
 
     %% Repository Implementation
     CourseWriteRepository -->  EloquentCourseWriteRepository
