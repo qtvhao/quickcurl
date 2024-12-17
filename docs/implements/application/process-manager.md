@@ -21,7 +21,11 @@ flowchart
         ProcessManager["CourseCreatedProcessManager"]
         ConditionFreeCourse{"Yes/No?"}
         DispatchCommand["Dispatch NotifyFinanceTeamCommand"]
+    end
+    
+    subgraph EventBusComponent["EventBusInterface"]
         EventBus["EventBus"]
+        EventBus2["EventBus"]
     end
 
     %% Connections
@@ -29,6 +33,7 @@ flowchart
     CommandBus2 --> CreateCourseHandler
     CourseAggregate -->|"releaseEvents()"| CourseCreatedEvent
     CreateCourseHandler -->|"publishEvent()"| EventBus
+    NotifyFinanceTeamHandler -->|"publishEvent()"| EventBus2
     CourseCreatedEvent --> CreateCourseHandler
     NotificationCreatedEvent --> NotifyFinanceTeamHandler
 
@@ -42,5 +47,6 @@ flowchart
     ConditionFreeCourse -->|No| DispatchCommand
     DispatchCommand --> CommandBus
     CommandBus --> NotifyFinanceTeamHandler
+
 
 
