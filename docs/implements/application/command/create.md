@@ -28,7 +28,7 @@ flowchart TD
     end
 
     %% Dependencies of CreateCourseHandler
-    CreateCourseHandler --> CreateCourseCommand
+    CreateCourseCommand -->|"CommandBusInterface"| CreateCourseHandler
     CreateCourseHandler --> CourseWriteRepository
     CreateCourseHandler --> CourseReadRepository
     CreateCourseHandler --> EventDispatcher
@@ -46,4 +46,4 @@ flowchart TD
     EloquentCourseReadRepository --> CourseReadRepository
 
     %% Dependants
-    CourseController --> CreateCourseHandler
+    CourseController --> CreateCourseCommand
