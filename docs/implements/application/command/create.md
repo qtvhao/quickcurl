@@ -1,5 +1,5 @@
 ```mermaid
-flowchart LR
+flowchart TD
     %% Application Layer
     subgraph Application Layer
         CreateCourseHandler[CreateCourseHandler]
@@ -10,6 +10,7 @@ flowchart LR
     %% Domain Layer
     subgraph Domain Layer
         CourseAggregate[CourseAggregate]
+        CourseEntity[Course]
         CourseCreatedEvent[CourseCreatedEvent]
         CourseWriteRepository[CourseWriteRepositoryInterface]
         CourseReadRepository[CourseReadRepositoryInterface]
@@ -26,12 +27,15 @@ flowchart LR
         CourseController[CourseController]
     end
 
-    %% Dependencies
+    %% Dependencies of CreateCourseHandler
     CreateCourseHandler --> CreateCourseCommand
     CreateCourseHandler --> CourseWriteRepository
     CreateCourseHandler --> CourseReadRepository
     CreateCourseHandler --> EventDispatcher
-    CreateCourseHandler --> CourseAggregate
+
+    %% Repository Methods
+    CourseWriteRepository -->|"getByUuid() returns"| CourseAggregate
+    CourseReadRepository -->|"getByUuid() returns"| CourseEntity
 
     %% Event Flow
     CourseAggregate --> CourseCreatedEvent
@@ -43,4 +47,3 @@ flowchart LR
 
     %% Dependants
     CourseController --> CreateCourseHandler
-
