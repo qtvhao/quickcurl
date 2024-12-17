@@ -9,9 +9,11 @@ flowchart
 
     %% Domain Layer
     subgraph Domain Layer
+        CourseEntity[CourseEntity]
         CourseAggregate[CourseAggregate]
         CourseWriteRepository[CourseWriteRepositoryInterface]
         CourseReadRepository[CourseReadRepositoryInterface]
+        CourseCreatedEvent[CourseCreatedEvent]
     end
 
     %% Infrastructure Layer
@@ -29,9 +31,11 @@ flowchart
     CreateCourseCommand -->|"CommandBusInterface"| CreateCourseHandler
     CreateCourseHandler -->|"getByUuid() save()"| CourseWriteRepository
     CreateCourseHandler -->|"getByUuid()"| CourseReadRepository
+    CourseEntity --> CourseReadRepository
+    CourseWriteRepository --> CourseAggregate
 
     %% Event Flow
-    CourseAggregate --> CourseCreatedEvent
+    CourseCreatedEvent -->  CourseAggregate
 
     %% Repository Implementation
     CourseWriteRepository -->  EloquentCourseWriteRepository
