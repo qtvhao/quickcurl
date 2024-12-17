@@ -1,5 +1,5 @@
 ```mermaid
-flowchart TD
+flowchart
     %% Application Layer
     subgraph Application Layer
         CreateCourseHandler[CreateCourseHandler]
@@ -10,8 +10,6 @@ flowchart TD
     %% Domain Layer
     subgraph Domain Layer
         CourseAggregate[CourseAggregate]
-        CourseEntity[Course]
-        CourseCreatedEvent[CourseCreatedEvent]
         CourseWriteRepository[CourseWriteRepositoryInterface]
         CourseReadRepository[CourseReadRepositoryInterface]
     end
@@ -29,21 +27,15 @@ flowchart TD
 
     %% Dependencies of CreateCourseHandler
     CreateCourseCommand -->|"CommandBusInterface"| CreateCourseHandler
-    CreateCourseHandler --> CourseWriteRepository
-    CreateCourseHandler --> CourseReadRepository
-    CreateCourseHandler --> EventDispatcher
-
-    %% Repository Methods
-    CourseWriteRepository -->|"getByUuid() returns"| CourseAggregate
-    CourseReadRepository -->|"getByUuid() returns"| CourseEntity
+    CreateCourseHandler -->|"getByUuid() save()"| CourseWriteRepository
+    CreateCourseHandler -->|"getByUuid()"| CourseReadRepository
 
     %% Event Flow
     CourseAggregate --> CourseCreatedEvent
-    EventDispatcher --> CourseCreatedEvent
 
     %% Repository Implementation
-    EloquentCourseWriteRepository --> CourseWriteRepository
-    EloquentCourseReadRepository --> CourseReadRepository
+    CourseWriteRepository -->  EloquentCourseWriteRepository
+    CourseReadRepository --> EloquentCourseReadRepository
 
     %% Dependants
     CourseController --> CreateCourseCommand
