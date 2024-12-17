@@ -1,21 +1,27 @@
 ```mermaid
-flowchart TD
+flowchart LR
+    %% Application Layer
     subgraph Application Layer
         CreateCourseHandler[CreateCourseHandler]
         CreateCourseCommand[CreateCourseCommand]
-        CourseWriteRepository[CourseWriteRepositoryInterface]
         EventDispatcher[EventDispatcher]
     end
 
+    %% Domain Layer
     subgraph Domain Layer
         CourseAggregate[CourseAggregate]
         CourseCreatedEvent[CourseCreatedEvent]
+        CourseWriteRepository[CourseWriteRepositoryInterface]
+        CourseReadRepository[CourseReadRepositoryInterface]
     end
 
+    %% Infrastructure Layer
     subgraph Infrastructure Layer
-        EloquentCourseRepository[EloquentCourseWriteRepository]
+        EloquentCourseWriteRepository[EloquentCourseWriteRepository]
+        EloquentCourseReadRepository[EloquentCourseReadRepository]
     end
 
+    %% Presentation Layer
     subgraph Presentation Layer
         CourseController[CourseController]
     end
@@ -23,13 +29,18 @@ flowchart TD
     %% Dependencies
     CreateCourseHandler --> CreateCourseCommand
     CreateCourseHandler --> CourseWriteRepository
+    CreateCourseHandler --> CourseReadRepository
     CreateCourseHandler --> EventDispatcher
     CreateCourseHandler --> CourseAggregate
 
-    %% Event Dependency
+    %% Event Flow
     CourseAggregate --> CourseCreatedEvent
     EventDispatcher --> CourseCreatedEvent
 
-    %% Dependant
+    %% Repository Implementation
+    EloquentCourseWriteRepository --> CourseWriteRepository
+    EloquentCourseReadRepository --> CourseReadRepository
+
+    %% Dependants
     CourseController --> CreateCourseHandler
-    EloquentCourseRepository --> CourseWriteRepository
+
