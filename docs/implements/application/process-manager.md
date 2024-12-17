@@ -1,22 +1,46 @@
 ```mermaid
-flowchart TD
-    %% Layer Definitions
-    subgraph Domain_Layer["Domain Layer"]
-        CourseAggregate["Course Aggregate"] 
-        CourseCreatedEvent["Course Created Event"]
+flowchart
+    %% Domain Layer
+    subgraph CommandBusComponent["CommandBusInterface"]
+        CommandBus["CommandBus"]
+        CommandBus2["CommandBus"]
     end
 
-    subgraph Application_Layer["Application Layer"]
-        EventBus["Event Bus"] 
-        ProcessManager["Process Manager"]
+    subgraph DomainLayer2["Domain Layer"]
+        NotificationCreatedEvent["NotificationCreatedEvent"]
+    end
+    subgraph DomainLayer["Domain Layer"]
+        CourseCreatedEvent["CourseCreatedEvent"]
+        CourseAggregate["CourseAggregate"]
     end
 
-    subgraph Infrastructure_Layer["Infrastructure Layer"]
-        ExternalServices["External Services\n(Email, Cache, Logging, etc.)"]
+    %% Application Layer
+    subgraph ApplicationLayer["Application Layer"]
+        CreateCourseHandler["CreateCourseHandler"]
+        NotifyFinanceTeamHandler["NotifyFinanceTeamHandler"]
+        ProcessManager["CourseCreatedProcessManager"]
+        ConditionFreeCourse{"Yes/No?"}
+        DispatchCommand["Dispatch NotifyFinanceTeamCommand"]
+        EventBus["EventBus"]
     end
 
     %% Connections
-    CourseAggregate -->|Generates| CourseCreatedEvent
-    CourseCreatedEvent -->|Publishes| EventBus
+    %% Command Flow
+    CommandBus2 --> CreateCourseHandler
+    CourseAggregate -->|"releaseEvents()"| CourseCreatedEvent
+    CreateCourseHandler -->|"publishEvent()"| EventBus
+    CourseCreatedEvent --> CreateCourseHandler
+    NotificationCreatedEvent --> NotifyFinanceTeamHandler
+
+    %% Event Flow
     EventBus -->|Dispatches| ProcessManager
-    ProcessManager -->|Executes Side Effects| ExternalServices
+    ProcessManager --> ConditionFreeCourse
+
+    %% Branching Logic
+    ConditionFreeCourse -->|Yes| SendEmail
+
+    ConditionFreeCourse -->|No| DispatchCommand
+    DispatchCommand --> CommandBus
+    CommandBus --> NotifyFinanceTeamHandler
+
+
