@@ -15,9 +15,12 @@ flowchart
     end
 
     %% Application Layer
+    subgraph ApplicationLayer2["Application Layer"]
+        NotifyFinanceTeamHandler["NotifyFinanceTeamHandler"]
+        ProcessManager2["NotificationCreatedProcessManager"]
+    end
     subgraph ApplicationLayer["Application Layer"]
         CreateCourseHandler["CreateCourseHandler"]
-        NotifyFinanceTeamHandler["NotifyFinanceTeamHandler"]
         ProcessManager["CourseCreatedProcessManager"]
         ConditionFreeCourse{"Yes/No?"}
         DispatchCommand["Dispatch NotifyFinanceTeamCommand"]
@@ -39,6 +42,7 @@ flowchart
 
     %% Event Flow
     EventBus -->|Dispatches| ProcessManager
+    EventBus2 -->|Dispatches| ProcessManager2
     ProcessManager --> ConditionFreeCourse
 
     %% Branching Logic
@@ -47,6 +51,7 @@ flowchart
     ConditionFreeCourse -->|No| DispatchCommand
     DispatchCommand --> CommandBus
     CommandBus --> NotifyFinanceTeamHandler
+
 
 
 
