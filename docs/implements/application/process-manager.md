@@ -1,4 +1,6 @@
 ```mermaid
+%%{init: {'themeVariables': { 'fontSize': '13px'}}}%%
+
 flowchart
     %% Domain Layer
     subgraph CommandBusComponent["CommandBusInterface"]
