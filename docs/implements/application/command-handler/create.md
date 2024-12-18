@@ -1,7 +1,7 @@
 ```mermaid
-%%{init: {'themeVariables': { 'fontSize': '12px'}}}%%
+%%{init: {'themeVariables': { 'fontSize': '13px'}}}%%
 
-flowchart
+flowchart LR
     %% Application Layer
     subgraph Application Layer
         CreateCourseHandler[CreateCourseHandler]
