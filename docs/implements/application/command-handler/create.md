@@ -1,4 +1,6 @@
 ```mermaid
+%%{init: {'themeVariables': { 'fontSize': '12px'}}}%%
+
 flowchart
     %% Application Layer
     subgraph Application Layer
