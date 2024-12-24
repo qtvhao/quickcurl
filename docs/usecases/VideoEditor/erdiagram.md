@@ -1,0 +1,143 @@
+```mermaid
+erDiagram
+%%========== ENTITIES ==========%%
+PROJECT {
+  UUID id PK
+  STRING name
+  DATE creationDate
+  DATE lastModifiedDate
+}
+
+MEDIA_LIBRARY {
+  UUID id PK
+  STRING files[]
+  STRING categories[]
+}
+
+TIMELINE {
+  UUID id PK
+  STRING duration
+  STRING playheadPosition
+  BOOLEAN snapEnabled
+}
+
+VIDEO_TRACK {
+  UUID id PK
+  INTEGER layer
+  FLOAT opacity
+}
+
+AUDIO_TRACK {
+  UUID id PK
+  FLOAT volume
+  BOOLEAN mute
+}
+
+CLIP {
+  UUID id PK
+  STRING sourceFile
+  STRING startTime
+  STRING endTime
+}
+
+TRANSITION {
+  UUID id PK
+  STRING type
+  STRING duration
+}
+
+COLLABORATION_SESSION {
+  UUID id PK
+  UUID projectId FK
+  STRING participants[]
+  STRING sessionState
+}
+
+EXPORT_SETTINGS {
+  UUID id PK
+  STRING resolution
+  STRING format
+  FLOAT frameRate
+  INTEGER bitRate
+  STRING outputPath
+}
+
+UNDO_REDO_MANAGER {
+  UUID id PK
+  STRING undoStack[]
+  STRING redoStack[]
+}
+
+%%========== VALUE OBJECTS ==========%%
+RESOLUTION {
+  INTEGER width
+  INTEGER height
+}
+
+FRAME_RATE {
+  FLOAT value
+}
+
+FILE_FORMAT {
+  STRING type
+}
+
+TIMECODE {
+  STRING time
+}
+
+VIDEO_EFFECT {
+  STRING type
+  STRING parameters
+}
+
+AUDIO_EFFECT {
+  STRING type
+  STRING parameters
+}
+
+KEYFRAME {
+  STRING time
+  STRING value
+}
+
+AUDIO_MIXING_CONFIG {
+  FLOAT volumeLevel
+  STRING balance
+}
+
+ASPECT_RATIO {
+  STRING ratio
+}
+
+AUDIO_WAVEFORM {
+  STRING data
+}
+
+%%========== RELATIONSHIPS ==========%%
+PROJECT ||--|{ MEDIA_LIBRARY : contains
+PROJECT ||--|{ TIMELINE : contains
+PROJECT ||--|{ EXPORT_SETTINGS : uses
+PROJECT ||--|{ COLLABORATION_SESSION : manages
+PROJECT ||--|{ UNDO_REDO_MANAGER : tracks
+
+TIMELINE ||--|{ VIDEO_TRACK : contains
+TIMELINE ||--|{ AUDIO_TRACK : contains
+
+VIDEO_TRACK ||--|{ CLIP : contains
+AUDIO_TRACK ||--|{ CLIP : contains
+
+CLIP ||--|{ VIDEO_EFFECT : applies
+CLIP ||--|{ AUDIO_EFFECT : applies
+CLIP ||--|{ TRANSITION : uses
+CLIP ||--|{ KEYFRAME : references
+CLIP ||--|{ TIMECODE : references
+
+EXPORT_SETTINGS ||--|| RESOLUTION : configures
+EXPORT_SETTINGS ||--|| FRAME_RATE : configures
+EXPORT_SETTINGS ||--|| FILE_FORMAT : supports
+
+AUDIO_TRACK ||--|| AUDIO_MIXING_CONFIG : uses
+AUDIO_TRACK ||--|| AUDIO_WAVEFORM : displays
+
+RESOLUTION ||--|| ASPECT_RATIO : relates
