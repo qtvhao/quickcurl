@@ -1,0 +1,150 @@
+```mermaid
+classDiagram
+    %% ===== Entities =====
+    class Project {
+        + id: UUID
+        + name: String
+        + creationDate: Date
+        + lastModifiedDate: Date
+        + settings: ExportSettings
+        + mediaLibrary: MediaLibrary
+        + timeline: Timeline
+        + collaborationSession: CollaborationSession
+        + undoRedoManager: UndoRedoManager
+    }
+
+    class Timeline {
+        + id: UUID
+        + duration: Timecode
+        + playheadPosition: Timecode
+        + snapEnabled: Boolean
+        + tracks: List<Track>
+    }
+
+    class Track {
+        + id: UUID
+        + type: String
+        + clips: List<Clip>
+    }
+
+    class Clip {
+        + id: UUID
+        + sourceFile: String
+        + startTime: Timecode
+        + endTime: Timecode
+        + effects: List<VideoEffect>
+        + transitions: List<Transition>
+    }
+
+    class MediaLibrary {
+        + id: UUID
+        + files: List<String>
+        + categories: List<String>
+    }
+
+    class ExportSettings {
+        + id: UUID
+        + resolution: Resolution
+        + format: FileFormat
+        + frameRate: FrameRate
+        + bitRate: String
+        + outputPath: String
+    }
+
+    class Transition {
+        + id: UUID
+        + type: String
+        + duration: Timecode
+    }
+
+    class CollaborationSession {
+        + id: UUID
+        + participants: List<User>
+        + sessionState: String
+    }
+
+    class UndoRedoManager {
+        + undoStack: List<String>
+        + redoStack: List<String>
+    }
+
+    class User {
+        + id: UUID
+        + username: String
+        + email: String
+        + preferences: String
+    }
+
+    %% ===== Value Objects =====
+    class Resolution {
+        + width: Integer
+        + height: Integer
+    }
+
+    class FrameRate {
+        + value: Integer
+    }
+
+    class Timecode {
+        + time: String
+    }
+
+    class FileFormat {
+        + format: String
+    }
+
+    class VideoEffect {
+        + name: String
+        + parameters: Map
+    }
+
+    class AudioEffect {
+        + name: String
+        + parameters: Map
+    }
+
+    class Keyframe {
+        + time: Timecode
+        + parameters: Map
+    }
+
+    class PlaybackSpeed {
+        + speed: Float
+    }
+
+    class AudioMixingConfig {
+        + volumeLevel: Float
+        + balance: String
+        + fadeIn: Timecode
+    }
+
+    class AspectRatio {
+        + ratio: String
+    }
+
+    %% ===== Relationships =====
+    Project --> Timeline : has
+    Project --> MediaLibrary : has
+    Project --> ExportSettings : uses
+    Project --> CollaborationSession : manages
+    Project --> UndoRedoManager : manages
+    Project --> User : managed by
+
+    Timeline --> Track : contains
+    Track --> Clip : contains
+    Clip --> VideoEffect : applies
+    Clip --> Transition : applies
+    Clip --> Keyframe : uses
+
+    ExportSettings --> Resolution : uses
+    ExportSettings --> FrameRate : uses
+    ExportSettings --> FileFormat : uses
+
+    Transition --> Timecode : uses
+    AudioMixingConfig --> Timecode : uses
+    Keyframe --> Timecode : uses
+
+    Track --> AudioMixingConfig : uses
+    Track --> PlaybackSpeed : controls
+
+    MediaLibrary --> FileFormat : contains
