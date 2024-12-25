@@ -1,134 +1,118 @@
 erDiagram
 %%========== ENTITIES ==========%%
 PROJECT {
-  UUID id PK
+  UUID uuid PK
   STRING name
-  DATE creationDate
-  DATE lastModifiedDate
-}
-
-MEDIA_LIBRARY {
-  UUID id PK
-  STRING files[]
-  STRING categories[]
+  DATE creation_date
+  DATE last_modified_date
 }
 
 TIMELINE {
-  UUID id PK
+  UUID uuid PK
   STRING duration
-  STRING playheadPosition
-  BOOLEAN snapEnabled
-}
-
-VIDEO_TRACK {
-  UUID id PK
-  INTEGER layer
-  FLOAT opacity
+  STRING playhead_position
+  BOOLEAN snap_enabled
 }
 
 AUDIO_TRACK {
-  UUID id PK
+  UUID uuid PK
   FLOAT volume
   BOOLEAN mute
+  STRING track_name
+  DATETIME created_at
+  DATETIME updated_at
+}
+
+VIDEO_TRACK {
+  UUID uuid PK
+  UUID timeline_id FK
+  INTEGER layer
+  FLOAT opacity
+  DATETIME created_at
+  DATETIME updated_at
 }
 
 CLIP {
-  UUID id PK
-  STRING sourceFile
-  STRING startTime
-  STRING endTime
-}
-
-TRANSITION {
-  UUID id PK
-  STRING type
-  STRING duration
-}
-
-COLLABORATION_SESSION {
-  UUID id PK
-  UUID projectId FK
-  STRING participants[]
-  STRING sessionState
-}
-
-EXPORT_SETTINGS {
-  UUID id PK
-  STRING resolution
-  STRING format
-  FLOAT frameRate
-  INTEGER bitRate
-  STRING outputPath
-}
-
-UNDO_REDO_MANAGER {
-  UUID id PK
-  STRING undoStack[]
-  STRING redoStack[]
-}
-
-%%========== VALUE OBJECTS ==========%%
-RESOLUTION {
-  UUID id PK
-  INTEGER width
-  INTEGER height
-}
-
-FRAME_RATE {
-  UUID id PK
-  FLOAT value
-}
-
-FILE_FORMAT {
-  UUID id PK
-  STRING type
-}
-
-TIMECODE {
-  UUID id PK
-  STRING time
+  UUID uuid PK
+  STRING source_file
+  STRING start_time
+  STRING end_time
+  UUID video_track_id FK
+  UUID audio_track_id FK
 }
 
 VIDEO_EFFECT {
-  UUID id PK
+  UUID uuid PK
   STRING type
-  STRING parameters
+  JSON parameters
+  DATETIME created_at
+  DATETIME updated_at
 }
 
 AUDIO_EFFECT {
-  UUID id PK
+  UUID uuid PK
   STRING type
-  STRING parameters
+  TEXT parameters
+  DATETIME created_at
+  DATETIME updated_at
+}
+
+TRANSITION {
+  UUID uuid PK
+  STRING type
+  STRING duration
+  UUID clip_id FK
+  DATETIME created_at
 }
 
 KEYFRAME {
-  UUID id PK
+  UUID uuid PK
   STRING time
   STRING value
+  UUID clip_id FK
+  DATETIME created_at
 }
 
-AUDIO_MIXING_CONFIG {
-  UUID id PK
-  FLOAT volumeLevel
-  STRING balance
+TIMECODE {
+  UUID uuid PK
+  STRING time
+  UUID clip_id FK
+  DATETIME created_at
 }
 
-ASPECT_RATIO {
-  UUID id PK
-  STRING ratio
+MEDIA_LIBRARY {
+  UUID uuid PK
+  STRING name
+  DATETIME created_at
+  DATETIME updated_at
+  UUID project_id FK
 }
 
-AUDIO_WAVEFORM {
-  UUID id PK
-  STRING data
+MEDIA_FILE {
+  UUID uuid PK
+  UUID library_id FK
+  STRING file_name
+  STRING file_path
+  STRING file_type
+  FLOAT file_size
+  DATETIME uploaded_at
+}
+
+MEDIA_CATEGORY {
+  UUID uuid PK
+  STRING name
+  STRING description
+}
+
+MEDIA_FILE_CATEGORY {
+  UUID file_uuid PK
+  UUID category_uuid PK
 }
 
 %%========== RELATIONSHIPS ==========%%
-PROJECT ||--|{ MEDIA_LIBRARY : contains
+
 PROJECT ||--|{ TIMELINE : contains
-PROJECT ||--|{ EXPORT_SETTINGS : uses
-PROJECT ||--|{ COLLABORATION_SESSION : manages
-PROJECT ||--|{ UNDO_REDO_MANAGER : tracks
+PROJECT ||--|{ MEDIA_LIBRARY : contains
 
 TIMELINE ||--|{ VIDEO_TRACK : contains
 TIMELINE ||--|{ AUDIO_TRACK : contains
@@ -142,11 +126,6 @@ CLIP ||--|{ TRANSITION : uses
 CLIP ||--|{ KEYFRAME : references
 CLIP ||--|{ TIMECODE : references
 
-EXPORT_SETTINGS ||--|| RESOLUTION : configures
-EXPORT_SETTINGS ||--|| FRAME_RATE : configures
-EXPORT_SETTINGS ||--|| FILE_FORMAT : supports
-
-AUDIO_TRACK ||--|| AUDIO_MIXING_CONFIG : uses
-AUDIO_TRACK ||--|| AUDIO_WAVEFORM : displays
-
-RESOLUTION ||--|| ASPECT_RATIO : relates
+MEDIA_LIBRARY ||--|{ MEDIA_FILE : contains
+MEDIA_FILE ||--|{ MEDIA_FILE_CATEGORY : tagged
+MEDIA_CATEGORY ||--|{ MEDIA_FILE_CATEGORY : tagged
