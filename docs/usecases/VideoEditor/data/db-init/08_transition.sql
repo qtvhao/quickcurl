@@ -1,0 +1,8 @@
+CREATE TABLE transition (
+    uuid CHAR(36) PRIMARY KEY,
+    type VARCHAR(50) NOT NULL,
+    duration VARCHAR(20) NOT NULL,
+    clip_id CHAR(36) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (clip_id) REFERENCES clips(uuid) ON DELETE CASCADE
+);

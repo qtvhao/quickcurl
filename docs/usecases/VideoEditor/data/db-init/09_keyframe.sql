@@ -1,0 +1,8 @@
+CREATE TABLE keyframe (
+    uuid CHAR(36) PRIMARY KEY,
+    time VARCHAR(20) NOT NULL,
+    value VARCHAR(255) NOT NULL,
+    clip_id CHAR(36) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (clip_id) REFERENCES clips(uuid) ON DELETE CASCADE
+);
