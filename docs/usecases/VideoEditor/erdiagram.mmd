@@ -69,47 +69,57 @@ UNDO_REDO_MANAGER {
 
 %%========== VALUE OBJECTS ==========%%
 RESOLUTION {
+  UUID id PK
   INTEGER width
   INTEGER height
 }
 
 FRAME_RATE {
+  UUID id PK
   FLOAT value
 }
 
 FILE_FORMAT {
+  UUID id PK
   STRING type
 }
 
 TIMECODE {
+  UUID id PK
   STRING time
 }
 
 VIDEO_EFFECT {
+  UUID id PK
   STRING type
   STRING parameters
 }
 
 AUDIO_EFFECT {
+  UUID id PK
   STRING type
   STRING parameters
 }
 
 KEYFRAME {
+  UUID id PK
   STRING time
   STRING value
 }
 
 AUDIO_MIXING_CONFIG {
+  UUID id PK
   FLOAT volumeLevel
   STRING balance
 }
 
 ASPECT_RATIO {
+  UUID id PK
   STRING ratio
 }
 
 AUDIO_WAVEFORM {
+  UUID id PK
   STRING data
 }
 
