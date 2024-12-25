@@ -2,4 +2,6 @@
 
 # 4k resolution is 3840x2160
 npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/usecases/VideoEditor/diagram.mmd -e png -w 3840 -H 2160
+npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/usecases/VideoEditor/diagram.mmd -w 3840 -H 2160
 npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/usecases/VideoEditor/erdiagram.mmd -e png -w 3840 -H 2160
+npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/usecases/VideoEditor/erdiagram.mmd -w 3840 -H 2160
