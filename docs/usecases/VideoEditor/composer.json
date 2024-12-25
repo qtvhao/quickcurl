@@ -1,0 +1,15 @@
+{
+    "name": "qtvhao/video-editor",
+    "autoload": {
+        "psr-4": {
+            "Qtvhao\\VideoEditor\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hao Nghiem",
+            "email": "qtvhao@gmail.com"
+        }
+    ],
+    "require": {}
+}
