@@ -3,3 +3,4 @@
 # 4k resolution is 3840x2160
 npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/designsprintkit/intro.mmd -e png -w 3840 -H 2160
 npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/designsprintkit/understand.mmd -e png -w 3840 -H 2160
+npx -p @mermaid-js/mermaid-cli mmdc -i ./docs/designsprintkit/understand-example.mmd -e png -w 3840 -H 2160
