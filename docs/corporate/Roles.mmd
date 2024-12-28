@@ -1,0 +1,59 @@
+flowchart TB
+    %% CEO Trung Tâm
+    CEO["🛠️ CEO (Chief Executive Officer)<br>Tổng Giám đốc Điều hành"] 
+
+    %% Các Cụm Chức Năng Chính
+    CEO --> Strategy["🎯 Chiến lược & Lãnh đạo"]
+    CEO --> Operations["⚙️ Vận hành & Hiệu suất"]
+    CEO --> Finance["💵 Tài chính & Quản trị rủi ro"]
+    CEO --> TechData["💻 Công nghệ & Dữ liệu"]
+
+    %% Nhóm 1: Chiến lược & Lãnh đạo
+    subgraph Cluster_Strategy["🎯 Chiến lược & Lãnh đạo"]
+        CSO["🎯 CSO (Chief Strategy Officer)"] --> CSO1["✅ Phát triển chiến lược dài hạn"]
+        CSO --> CSO2["✅ Nghiên cứu xu hướng thị trường"]
+        CHRO["🤝 CHRO (Chief Human Resources Officer)"] --> CHRO1["✅ Tuyển dụng và đào tạo"]
+        CHRO --> CHRO2["✅ Xây dựng văn hóa công ty"]
+    end
+
+    %% Nhóm 2: Vận hành & Hiệu suất
+    subgraph Cluster_Operations["⚙️ Vận hành & Hiệu suất"]
+        COO["⚙️ COO (Chief Operating Officer)"] --> COO1["✅ Quản lý hoạt động hàng ngày"]
+        COO --> COO2["✅ Tối ưu quy trình"]
+        CMO["📢 CMO (Chief Marketing Officer)"] --> CMO1["✅ Xây dựng thương hiệu"]
+        CMO --> CMO2["✅ Quản lý chiến dịch tiếp thị"]
+    end
+
+    %% Nhóm 3: Tài chính & Quản trị rủi ro
+    subgraph Cluster_Finance["💵 Tài chính & Quản trị rủi ro"]
+        CFO["💵 CFO (Chief Financial Officer)"] --> CFO1["✅ Quản lý ngân sách"]
+        CFO --> CFO2["✅ Tối ưu chi phí"]
+        CLO["⚖️ CLO (Chief Legal Officer)"] --> CLO1["✅ Tuân thủ pháp luật"]
+        CLO --> CLO2["✅ Giảm thiểu rủi ro pháp lý"]
+    end
+
+    %% Nhóm 4: Công nghệ & Dữ liệu
+    subgraph Cluster_TechData["💻 Công nghệ & Dữ liệu"]
+        CTO["💻 CTO (Chief Technology Officer)"] --> CTO1["✅ Phát triển công nghệ"]
+        CTO --> CTO2["✅ Nghiên cứu đổi mới"]
+        CIO["🔒 CIO (Chief Information Officer)"] --> CIO1["✅ Quản lý hệ thống CNTT"]
+        CIO --> CIO2["✅ An ninh mạng"]
+        CDO["📊 CDO (Chief Data Officer)"] --> CDO1["✅ Phân tích dữ liệu"]
+        CDO --> CDO2["✅ Hỗ trợ ra quyết định"]
+    end
+
+    %% Màu sắc và style
+    classDef title fill:#FFD700,stroke:#000,stroke-width:2px;
+    classDef executive fill:#87CEEB,stroke:#000,stroke-width:1px;
+    classDef sub fill:#E6E6FA,stroke:#000,stroke-width:0.5px;
+    classDef cluster fill:#C8E6C9,stroke:#000,stroke-width:1px;
+
+    class CEO title;
+
+    class Strategy cluster;
+    class Operations cluster;
+    class Finance cluster;
+    class TechData cluster;
+
+    class CSO,CHRO,COO,CMO,CFO,CLO,CTO,CIO,CDO executive;
+    class CSO1,CSO2,CHRO1,CHRO2,COO1,COO2,CMO1,CMO2,CFO1,CFO2,CLO1,CLO2,CTO1,CTO2,CIO1,CIO2,CDO1,CDO2 sub;
