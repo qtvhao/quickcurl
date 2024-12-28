@@ -1,0 +1,32 @@
+flowchart LR
+    %% Subgraph Marketing
+    subgraph Marketing['📣 Bộ phận Marketing']
+        M1['📊 Nghiên cứu thị trường']
+        M2['🎯 Chiến lược quảng cáo']
+        M3['🚀 Chiến dịch tiếp thị']
+        M4['🗣️ Thu thập phản hồi khách hàng']
+    end
+    %% Subgraph Operating
+    subgraph Operating['⚙️ Bộ phận Operating']
+        O1['🏭 Sản xuất & Vận hành']
+        O2['📦 Quản lý chuỗi cung ứng']
+        O3['✅ Kiểm soát chất lượng']
+        O4['🔄 Cải tiến quy trình']
+    end
+    %% Subgraph Customer
+    subgraph Customer['🛍️ Khách hàng']
+        C1['💬 Phản hồi sản phẩm']
+        C2['🛒 Nhu cầu & Xu hướng']
+    end
+    %% Liên kết giữa các bộ phận
+    M1 --> C2['Nghiên cứu nhu cầu']
+    M2 --> O1['Yêu cầu sản phẩm phù hợp xu hướng']
+    M3 --> C1['Chiến dịch quảng bá đến khách hàng']
+    C1 --> M4['Phản hồi từ khách hàng']
+    M4 --> O4['Phản hồi để cải tiến sản xuất']
+    O3 --> C1['Cung cấp sản phẩm chất lượng cao']
+    O4 --> M1['Cải tiến quy trình dựa trên phản hồi']
+    %% Mục tiêu chung
+    M1 --> Goal['🎯 Mục tiêu: Thỏa mãn khách hàng & tối ưu hiệu suất']
+    O1 --> Goal
+    C1 --> Goal  
