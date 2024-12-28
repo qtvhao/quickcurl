@@ -1,0 +1,64 @@
+graph TD
+
+%% UBO (Chủ sở hữu tối cao)
+UBO["👑 UBO (Ultimate Beneficial Owner)<br>Chủ sở hữu tối cao"] --> Shareholders["🧑‍🤝‍🧑 Shareholders (Cổ đông)"]
+
+%% Shareholders → GMS
+Shareholders --> GMS["🏦 GMS (General Meeting of Shareholders)<br>Đại hội đồng cổ đông"]
+
+%% GMS → BoD
+GMS --> BoD["🏛️ BoD (Board of Directors)<br>Hội đồng Quản trị"]
+
+%% BoD → Chairperson, Independent Directors, Executive Directors, Non-Executive Directors
+BoD --> Chairperson["🪑 Chairperson (Chủ tịch HĐQT)"]
+BoD --> BoardMembers["👥 Board Members (Thành viên HĐQT)"]
+BoardMembers --> IndependentDirectors["🤝 Independent Directors<br>Giám đốc độc lập"]
+BoardMembers --> ExecutiveDirectors["👔 Executive Directors<br>Giám đốc điều hành"]
+BoardMembers --> NonExecutiveDirectors["📊 Non-Executive Directors<br>Giám đốc không điều hành"]
+
+%% Chairperson → CEO
+Chairperson --> CEO["🧑‍💼 CEO (Chief Executive Officer)<br>Tổng Giám đốc"]
+
+%% CEO → C-Level
+CEO --> CLevel["🛠️ C-Level Executives<br>Các Giám đốc cấp cao"]
+CLevel --> COO["⚙️ COO (Chief Operating Officer)"]
+CLevel --> CFO["💵 CFO (Chief Financial Officer)"]
+CLevel --> CTO["💻 CTO (Chief Technology Officer)"]
+CLevel --> CMO["📢 CMO (Chief Marketing Officer)"]
+CLevel --> CHRO["🤝 CHRO (Chief Human Resources Officer)"]
+CLevel --> CIO["🔒 CIO (Chief Information Officer)"]
+CLevel --> CDO["📊 CDO (Chief Data Officer)"]
+CLevel --> CLO["⚖️ CLO (Chief Legal Officer)"]
+CLevel --> CSO["🎯 CSO (Chief Strategy Officer)"]
+
+%% GMS → Government Authorities (Tuân thủ)
+GMS -.->|Compliance & Reporting| Compliance["⚖️ Government Authorities<br>Cơ quan Quản lý Nhà nước"]
+Gov --> Compliance["📑 Compliance & Regulations<br>Tuân thủ và Quy định"]
+
+%% Styling
+style UBO fill:#ffcc00,stroke:#333,stroke-width:2px
+style Shareholders fill:#ffe599,stroke:#333,stroke-width:1px
+style GMS fill:#f4cccc,stroke:#333,stroke-width:1px
+style Gov fill:#d9ead3,stroke:#333,stroke-width:1px
+style Compliance fill:#b6d7a8,stroke:#333,stroke-width:1px
+
+style BoD fill:#ffcc00,stroke:#333,stroke-width:2px
+style Chairperson fill:#ffe599,stroke:#333,stroke-width:1px
+style BoardMembers fill:#cfe2f3,stroke:#333,stroke-width:1px
+style IndependentDirectors fill:#cfe2f3,stroke:#333,stroke-width:1px
+style ExecutiveDirectors fill:#cfe2f3,stroke:#333,stroke-width:1px
+style NonExecutiveDirectors fill:#cfe2f3,stroke:#333,stroke-width:1px
+
+style CEO fill:#ffccff,stroke:#333,stroke-width:2px
+style CLevel fill:#d0e0ff,stroke:#333,stroke-width:1px
+style COO fill:#bbf,stroke:#333,stroke-width:1px
+style CFO fill:#bbf,stroke:#333,stroke-width:1px
+style CTO fill:#bbf,stroke:#333,stroke-width:1px
+style CMO fill:#bbf,stroke:#333,stroke-width:1px
+style CHRO fill:#bbf,stroke:#333,stroke-width:1px
+style CIO fill:#bbf,stroke:#333,stroke-width:1px
+style CDO fill:#bbf,stroke:#333,stroke-width:1px
+style CLO fill:#bbf,stroke:#333,stroke-width:1px
+style CSO fill:#bbf,stroke:#333,stroke-width:1px
+
+linkStyle 10 stroke:#555,stroke-width:1.5px,stroke-dasharray:5,5
