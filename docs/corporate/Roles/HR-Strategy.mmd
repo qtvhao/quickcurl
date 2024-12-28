@@ -1,0 +1,33 @@
+flowchart LR
+    %% Subgraph Chiến lược
+    subgraph Strategy["📊 Bộ phận Chiến lược"]
+        S1["📈 Phân tích thị trường"]
+        S2["🗺️ Xây dựng kế hoạch"]
+        S3["⚙️ Giám sát thực thi"]
+    end
+
+    %% Subgraph Nhân sự
+    subgraph HR["👩‍💼 Bộ phận Nhân sự"]
+        HR1["🎓 Tuyển dụng & Đào tạo"]
+        HR2["❤️ Phát triển văn hóa"]
+        HR3["📑 Đánh giá hiệu suất"]
+    end
+
+    %% Subgraph Sự Kết Hợp
+    subgraph Collaboration["🤝 Sự Kết Hợp Chiến lược & Nhân sự"]
+        C1["🎯 Dự báo nhu cầu nhân sự"]
+        C2["🌟 Phát triển lãnh đạo"]
+        C3["🔄 Quản lý sự thay đổi"]
+    end
+
+    %% Mối quan hệ giữa các bộ phận
+    S1 --> C1
+    S2 --> C2
+    S3 --> C3
+    HR1 --> C1
+    HR2 --> C2
+    HR3 --> C3
+
+    %% Liên kết giữa Chiến lược và Nhân sự
+    Strategy --> Collaboration
+    HR --> Collaboration
