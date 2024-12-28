@@ -1,0 +1,54 @@
+graph LR
+    %% Subgraph cho Finance
+    subgraph Finance [Finance 🏦]
+        F1[Quản lý ngân sách 💵] 
+        F2[Phân tích tài chính 📊]
+        F3[Quản lý rủi ro ⚠️]
+        F4[Báo cáo tài chính 📑]
+        F5[Huy động vốn 🏦]
+        F6[Quản lý dòng tiền 💧]
+        F7[Phân bổ vốn đầu tư 📈]
+    end
+
+    %% Subgraph cho Legal
+    subgraph Legal [Legal ⚖️]
+        L1[Tư vấn pháp lý 📚]
+        L2[Soạn thảo hợp đồng 📝]
+        L3[Đánh giá rủi ro pháp lý ⚠️]
+        L4[Quản lý tranh chấp ⚔️]
+        L5[Tuân thủ pháp luật ✅]
+        L6[Bảo vệ tài sản trí tuệ 🔒]
+        L7[Kiểm toán pháp lý 🔍]
+    end
+
+    %% Subgraph cho Hợp tác giữa Finance và Legal
+    subgraph Collaboration [Finance ↔️ Legal 🤝]
+        C1[Hợp đồng vay vốn 📄] 
+        C2[Thẩm định đầu tư 🏗️] 
+        C3[Xử lý tranh chấp tài chính ⚔️] 
+        C4[Tuân thủ báo cáo tài chính ✅] 
+    end
+
+    %% Mối quan hệ giữa Finance và Legal qua Collaboration
+    F5 --> C1
+    L2 --> C1
+
+    F7 --> C2
+    L3 --> C2
+
+    F3 --> C3
+    L4 --> C3
+
+    F4 --> C4
+    L5 --> C4
+
+    %% Mối quan hệ nội bộ trong Finance và Legal
+    F1 --> F2 --> F7
+    F3 --> F4 --> F6
+
+    L1 --> L2 --> L3
+    L4 --> L5 --> L7
+
+    %% Kết nối tổng quan giữa Finance và Legal
+    Finance --> Collaboration
+    Legal --> Collaboration
