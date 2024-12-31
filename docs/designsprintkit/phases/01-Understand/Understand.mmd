@@ -1,0 +1,58 @@
+flowchart TD
+    %% Subgraph cho từng hoạt động với mô tả tiếng Việt
+    
+    %% A: Xác định Thách thức
+    subgraph A[🎯 Define Challenge]
+        direction TB
+        A1[• Làm rõ vấn đề cần giải quyết] 
+        A2[• Xác định phạm vi thách thức] 
+    end
+    
+    %% B: Đặt Mục tiêu Dài Hạn
+    subgraph B[🥅 Set Long-Term Goals]
+        direction TB
+        B1[• Xác định mục tiêu cụ thể] 
+        B2[• Xác định kết quả kỳ vọng] 
+    end
+    
+    %% C: Hỏi ý kiến Chuyên gia
+    subgraph C[🧑‍💼🎤 Ask the Experts]
+        direction TB
+        C1[• Phỏng vấn chuyên gia và stakeholders] 
+        C2[• Thu thập góc nhìn chuyên môn] 
+    end
+    
+    %% D: Nghiên cứu và Phân tích Dữ liệu
+    subgraph D[📊🔍 Research + Insights]
+        direction TB
+        D1[• Xem xét dữ liệu hiện có] 
+        D2[• Phân tích hành vi người dùng] 
+    end
+    
+    %% E: Vẽ Bản đồ Hành trình Người dùng
+    subgraph E[🗺️ Map User Journey]
+        direction TB
+        E1[• Xác định các bước trong hành trình người dùng] 
+        E2[• Vẽ sơ đồ dòng chảy người dùng] 
+    end
+    
+    %% F: Xác định Giả định và Rủi ro
+    subgraph F[⚠️ Identify Assumptions + Risks]
+        direction TB
+        F1[• Liệt kê các giả định] 
+        F2[• Xác định rủi ro tiềm ẩn] 
+    end
+    
+    %% G: Đặt Câu hỏi Sprint
+    subgraph G[❓🤔 Define Sprint Questions]
+        direction TB
+        G1[• Đặt câu hỏi dẫn dắt Sprint] 
+        G2[• Xác định các khía cạnh cần kiểm chứng] 
+    end
+
+    %% Kết nối giữa các hoạt động
+    A --> B --> C --> D --> E --> F --> G
+
+    %% Định dạng cho các nhóm
+    classDef group fill:#f9f9f9,stroke:#333,stroke-width:1px,font-size:14px;
+    class A,B,C,D,E,F,G group;
