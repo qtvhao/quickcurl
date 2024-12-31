@@ -1,0 +1,58 @@
+flowchart TD
+%% Subgraph 1: Problem Framing
+subgraph A[🖼️ Problem Framing]
+    A1[📝 Define the Problem Clearly]
+    A2[🎯 Focus on a Single Problem]
+    A3[👤 Keep the Statement User-Centric]
+end
+%% Subgraph 2: Ask 'Why' Questions
+subgraph B[❓ Ask 'Why' Questions]
+    B1[🔍 Use the 5 Whys Technique]
+    B2[🛠️ Stay Focused on Root Causes]
+    B3[⚖️ Avoid Overthinking Each Why]
+end
+%% Subgraph 3: Stakeholder Input
+subgraph C[🗣️ Stakeholder Input]
+    C1[⏳ Timebox Discussions]
+    C2[🎤 Ask Specific Questions]
+    C3[📝 Record Key Insights]
+end
+%% Subgraph 4: Review Existing Data & Research
+subgraph D[📊 Review Data & Research]
+    D1[📂 Gather Data Beforehand]
+    D2[📈 Focus on Key Metrics]
+    D3[🔄 Identify Patterns Quickly]
+end
+%% Subgraph 5: Define Success Metrics
+subgraph E[📏 Define Success Metrics]
+    E1[🏁 Set Measurable Goals]
+    E2[📊 Align Metrics with Business Goals]
+    E3[🔑 Keep Metrics Simple]
+end
+%% Subgraph 6: Identify Constraints
+subgraph F[🚧 Identify Constraints]
+    F1[💻 List Technical Limitations]
+    F2[⏰ Consider Time & Resources]
+    F3[⚠️ Identify Potential Risks]
+end
+%% Final Outcome
+subgraph G[🏆 Outcome: Clear Problem Statement & Goals]
+    G1[✅ Problem Statement Defined]
+    G2[🎯 Key Goals Established]
+    G3[🗺️ Next Steps Planned]
+end
+%% Connections
+A --> B --> C --> D --> E --> F --> G
+G --> H[🚀 Next Step: Ideation]
+%% Styling
+classDef header fill:#e0f7fa,stroke:#006064,stroke-width:2px;
+classDef tip fill:#b2ebf2,stroke:#004d40,stroke-width:1px;
+class A header;
+class B header;
+class C header;
+class D header;
+class E header;
+class F header;
+class G fill:#bfb,stroke:#333,stroke-width:2px;
+class H fill:#ff9,stroke:#333,stroke-width:2px;
+class A1,A2,A3,B1,B2,B3,C1,C2,C3,D1,D2,D3,E1,E2,E3,F1,F2,F3,G1,G2,G3 tip;  
