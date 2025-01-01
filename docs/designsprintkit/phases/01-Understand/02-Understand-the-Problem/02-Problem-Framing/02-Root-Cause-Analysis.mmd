@@ -1,0 +1,50 @@
+flowchart TD
+    subgraph A [5 Whys]
+        direction TB
+        A1(What: Hỏi 'Tại sao?' 5 lần để tìm nguyên nhân gốc rễ)
+        A2(Example: Máy móc ngừng hoạt động)
+        A3(Tại sao? - Động cơ quá nóng)
+        A4(Tại sao? - Thiếu dầu bôi trơn)
+        A5(Tại sao? - Lịch bảo trì bị bỏ qua)
+        A6(Solution: Tăng ngân sách và bảo trì định kỳ)
+    end
+
+    subgraph B [Fishbone Diagram]
+        direction TB
+        B1(What: Xác định nguyên nhân qua 6 yếu tố)
+        B2(Example: Sản phẩm lỗi)
+        B3(Con người: Thiếu đào tạo)
+        B4(Máy móc: Hỏng hóc thiết bị)
+        B5(Phương pháp: Quy trình kém)
+        B6(Solution: Cải tiến quy trình và đào tạo)
+    end
+
+    subgraph C [Pareto Analysis]
+        direction TB
+        C1(What: 80/20 - Tập trung vào nguyên nhân chính)
+        C2(Example: Phàn nàn khách hàng)
+        C3(60%: Dịch vụ chậm)
+        C4(20%: Thái độ nhân viên)
+        C5(Solution: Tập trung cải thiện dịch vụ)
+    end
+
+    subgraph D [SWOT Analysis]
+        direction TB
+        D1(What: Phân tích Điểm mạnh, Điểm yếu, Cơ hội, Thách thức)
+        D2(Strengths: Sản phẩm chất lượng)
+        D3(Weaknesses: Phân phối yếu)
+        D4(Opportunities: Thị trường mới)
+        D5(Threats: Cạnh tranh cao)
+        D6(Solution: Cải thiện kênh phân phối)
+    end
+
+    subgraph E [Brainstorming]
+        direction TB
+        E1(What: Họp nhóm tạo ý tưởng)
+        E2(Example: Doanh số giảm)
+        E3(Ý tưởng 1: Tăng quảng cáo)
+        E4(Ý tưởng 2: Cải thiện dịch vụ)
+        E5(Solution: Thực hiện chiến dịch quảng cáo)
+    end
+
+    root --> A --> B --> C --> D --> E
