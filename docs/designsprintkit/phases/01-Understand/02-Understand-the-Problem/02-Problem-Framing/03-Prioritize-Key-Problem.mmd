@@ -1,36 +1,63 @@
-flowchart LR
+flowchart TD
     %% MoSCoW Method
     subgraph MoSCoW ["MoSCoW Method 📝✅"]
-        A1["Must Have: Tính năng bảo mật"] --> A2["Should Have: Giao diện thân thiện"]
-        A2 --> A3["Could Have: Chế độ tối"]
-        A3 --> A4["Won't Have: Hỗ trợ đa ngôn ngữ (v1)"]
+        A1["Must Have"] --> A2["Should Have"]
+        A2 --> A3["Could Have"]
+        A3 --> A4["Won't Have"]
+        A5["Ví dụ: Một trang web"] --> A5a["Phải có: Chức năng đăng nhập"]
+        A5 --> A5b["Nên có: Trang FAQ"]
+        A5 --> A5c["Có thể có: Chatbot"]
+        A5 --> A5d["Sẽ không có: Diễn đàn trong phiên bản đầu tiên"]
+        A6["Giải thích: MoSCoW ưu tiên các nhiệm vụ thành 'Phải có', 'Nên có', 'Có thể có' và 'Sẽ không có' để tập trung vào nhu cầu thiết yếu trước tiên."]
+        A4 --> A5 --> A6
     end
 
     %% Eisenhower Matrix
     subgraph Eisenhower ["Eisenhower Matrix 📦🔄"]
-        B1["Important & Urgent: Hoàn thành báo cáo hôm nay"] --> B2["Important & Not Urgent: Học kỹ năng mới"]
-        B2 --> B3["Not Important & Urgent: Trả lời tin nhắn không quan trọng"]
-        B3 --> B4["Not Important & Not Urgent: Lướt mạng xã hội"]
+        B1["Important & Urgent"] --> B2["Important & Not Urgent"]
+        B2 --> B3["Not Important & Urgent"]
+        B3 --> B4["Not Important & Not Urgent"]
+        B5["Ví dụ:"] --> B5a["Quan trọng & Khẩn cấp: Viết báo cáo gấp"]
+        B5 --> B5b["Quan trọng & Không khẩn cấp: Lên kế hoạch phát triển cá nhân"]
+        B5 --> B5c["Không quan trọng & Khẩn cấp: Trả lời email không quan trọng"]
+        B5 --> B5d["Không quan trọng & Không khẩn cấp: Lướt mạng xã hội"]
+        B6["Giải thích: Các nhiệm vụ được phân loại theo tính cấp bách và quan trọng để ưu tiên hiệu quả."]
+        B4 --> B5 --> B6
     end
 
     %% Pareto Principle
     subgraph Pareto ["Pareto Principle (80/20) 📊📉"]
-        C1["20% Sản phẩm bán chạy"] --> C2["80% Doanh thu"]
-        C1 --> C3["20% Lỗi hệ thống"] --> C4["80% Vấn đề phát sinh"]
+        C1["20% Effort"] --> C2["80% Results"]
+        C1 --> C3["20% Causes"] --> C4["80% Effects"]
+        C5["Ví dụ:"] --> C5a["20% khách hàng tạo ra 80% doanh thu"]
+        C5 --> C5b["Tập trung vào nhóm khách hàng này để tối đa hóa lợi nhuận"]
+        C6["Giải thích: 80% kết quả đến từ 20% nỗ lực, giúp tập trung vào các hoạt động mang lại tác động cao."]
+        C4 --> C5 --> C6
     end
 
     %% RICE Framework
     subgraph RICE ["RICE Framework 📏🎯"]
-        D1["Reach: 10,000 người dùng"] --> D2["Impact: Tăng 20% hiệu suất"]
-        D2 --> D3["Confidence: 80% chắc chắn"]
-        D3 --> D4["Effort: 2 tuần hoàn thành"]
-        D4 --> D5["RICE Score: Ưu tiên cao"]
+        D1["Reach"] --> D2["Impact"]
+        D2 --> D3["Confidence"]
+        D3 --> D4["Effort"]
+        D4 --> D5["RICE Score"]
+        D6["Ví dụ:"] --> D6a["Reach: Tính năng tiếp cận 1.000 người"]
+        D6 --> D6b["Impact: Có tác động lớn"]
+        D6 --> D6c["Confidence: Độ tự tin 80%"]
+        D6 --> D6d["Effort: Mất 20 giờ để thực hiện"]
+        D7["Giải thích: RICE đánh giá các dự án dựa trên Reach, Impact, Confidence và Effort để ưu tiên một cách khách quan."]
+        D5 --> D6 --> D7
     end
 
     %% Kano Model
     subgraph Kano ["Kano Model 💖📊"]
-        E1["Must-be: Điện thoại gọi điện"] --> E2["Performance: Pin lâu hơn"]
-        E2 --> E3["Excitement: Nhận diện khuôn mặt nhanh"]
+        E1["Must-be Features"] --> E2["Performance Features"]
+        E2 --> E3["Excitement Features"]
+        E4["Ví dụ:"] --> E4a["Must-be: Điện thoại phải có chức năng gọi điện"]
+        E4 --> E4b["Performance: Pin càng lâu càng tốt"]
+        E4 --> E4c["Excitement: Màn hình gập tạo ấn tượng đặc biệt"]
+        E5["Giải thích: Kano phân loại các tính năng dựa trên mức độ hài lòng của khách hàng: Must-be, Performance, và Excitement."]
+        E3 --> E4 --> E5
     end
 
     %% Relationships
