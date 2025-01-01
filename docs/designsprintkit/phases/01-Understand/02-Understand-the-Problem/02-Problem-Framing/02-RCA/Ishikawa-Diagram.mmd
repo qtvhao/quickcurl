@@ -1,0 +1,50 @@
+flowchart LR
+    Problem['❗ Vấn Đề: ChatGPT thiếu các yếu tố trực quan, làm hạn chế khả năng truyền đạt thông tin phức tạp']
+
+    subgraph Technology['🛠️ Công Nghệ']
+        T1['- Hệ thống tập trung vào văn bản và âm thanh']
+        T2['- Thiếu tích hợp API đồ họa']
+        T3['- Hạn chế khả năng kết xuất hình ảnh động']
+    end
+
+    subgraph People['👥 Con Người']
+        P1['- Nhu cầu người dùng ban đầu chưa rõ ràng']
+        P2['- Đội ngũ phát triển ưu tiên cải tiến xử lý văn bản']
+    end
+
+    subgraph Process['📊 Quy Trình']
+        PR1['- Thiếu quy trình tạo và hiển thị nội dung trực quan']
+        PR2['- Ít thử nghiệm cho tính năng đồ họa']
+    end
+
+    subgraph Resources['💼 Nguồn Lực']
+        R1['- Hạ tầng kỹ thuật chưa đủ mạnh']
+        R2['- Đầu tư vào công nghệ trực quan còn hạn chế']
+    end
+
+    subgraph Environment['🔄 Môi Trường']
+        E1['- Mô hình AI chủ yếu tập trung vào văn bản']
+        E2['- Dữ liệu huấn luyện thiếu hình ảnh']
+    end
+
+    Problem --> Technology
+    Problem --> People
+    Problem --> Process
+    Problem --> Resources
+    Problem --> Environment
+
+    Technology --> T1
+    Technology --> T2
+    Technology --> T3
+
+    People --> P1
+    People --> P2
+
+    Process --> PR1
+    Process --> PR2
+
+    Resources --> R1
+    Resources --> R2
+
+    Environment --> E1
+    Environment --> E2
