@@ -1,0 +1,40 @@
+flowchart LR
+    %% MoSCoW Method
+    subgraph MoSCoW ["MoSCoW Method 📝✅"]
+        A1["Must Have: Tính năng bảo mật"] --> A2["Should Have: Giao diện thân thiện"]
+        A2 --> A3["Could Have: Chế độ tối"]
+        A3 --> A4["Won't Have: Hỗ trợ đa ngôn ngữ (v1)"]
+    end
+
+    %% Eisenhower Matrix
+    subgraph Eisenhower ["Eisenhower Matrix 📦🔄"]
+        B1["Important & Urgent: Hoàn thành báo cáo hôm nay"] --> B2["Important & Not Urgent: Học kỹ năng mới"]
+        B2 --> B3["Not Important & Urgent: Trả lời tin nhắn không quan trọng"]
+        B3 --> B4["Not Important & Not Urgent: Lướt mạng xã hội"]
+    end
+
+    %% Pareto Principle
+    subgraph Pareto ["Pareto Principle (80/20) 📊📉"]
+        C1["20% Sản phẩm bán chạy"] --> C2["80% Doanh thu"]
+        C1 --> C3["20% Lỗi hệ thống"] --> C4["80% Vấn đề phát sinh"]
+    end
+
+    %% RICE Framework
+    subgraph RICE ["RICE Framework 📏🎯"]
+        D1["Reach: 10,000 người dùng"] --> D2["Impact: Tăng 20% hiệu suất"]
+        D2 --> D3["Confidence: 80% chắc chắn"]
+        D3 --> D4["Effort: 2 tuần hoàn thành"]
+        D4 --> D5["RICE Score: Ưu tiên cao"]
+    end
+
+    %% Kano Model
+    subgraph Kano ["Kano Model 💖📊"]
+        E1["Must-be: Điện thoại gọi điện"] --> E2["Performance: Pin lâu hơn"]
+        E2 --> E3["Excitement: Nhận diện khuôn mặt nhanh"]
+    end
+
+    %% Relationships
+    MoSCoW --> Eisenhower
+    Eisenhower --> Pareto
+    Pareto --> RICE
+    RICE --> Kano
