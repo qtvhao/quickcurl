@@ -2,6 +2,8 @@
 
 # 8k resolution is 7680x4320
 find ./docs/designsprintkit -name "*.mmd" -exec sed -i '' -E "s/\"/'/g" {} \;
+find ./docs/designsprintkit -name "*.mmd" -exec sed -i '' -E "s/\[\'/\[\"/g" {} \;
+find ./docs/designsprintkit -name "*.mmd" -exec sed -i '' -E "s/\'\]/\"\]/g" {} \;
 find ./docs/designsprintkit -name "*.mmd" -exec sed -i '' -E 's/\(\(/(/g' {} \;
 find ./docs/designsprintkit -name "*.mmd" -exec sed -i '' -E 's/\)\)/)/g' {} \;
 find ./docs/designsprintkit -name "*.mmd" -exec sed -i '' -E 's/[[:space:]]+$//' {} \;
