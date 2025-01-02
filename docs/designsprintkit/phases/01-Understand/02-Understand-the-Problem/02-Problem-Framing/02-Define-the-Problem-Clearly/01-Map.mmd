@@ -21,22 +21,8 @@ flowchart TD
         B3[📊 Validate with Data] --> E3["📈 **Ví dụ:** Dữ liệu người dùng cho thấy 70% phản hồi đề cập đến sự thiếu trực quan trong việc hiển thị thông tin phức tạp."]
     end
 
-    %% Focus on a Single Problem
-    subgraph A2[🎯 Focus on a Single Problem 🎯]
-        C1[📌 Prioritize Key Problem] --> F1["✅ **Ví dụ:** Ưu tiên cải thiện khả năng hiển thị biểu đồ và đồ họa trong ChatGPT."]
-        C2[🚫 Avoid Scope Creep] --> F2["⚠️ **Ví dụ:** Tránh thêm các tính năng không liên quan trong giai đoạn này."]
-        C3[📍 Focus on High Impact Areas] --> F3["💥 **Ví dụ:** Tập trung vào API đồ họa và tích hợp công cụ phổ biến."]
-    end
-
-    %% Keep the Statement User-Centric
-    subgraph A3[👤 Keep the Statement User-Centric 💬]
-        D1[📢 Use User Feedback] --> G1["🗣️ **Ví dụ:** Người dùng muốn dùng thử nghiệm để build channel youtube cho công ty của họ (công ty làm IT) 💬✅"]
-        D2[❓ Ask User-Focused Questions] --> G2["🤔 **Ví dụ:** Người dùng thường gặp khó khăn ở bước nào khi thao tác trên nền tảng?"]
-        D3[❤️ Empathize with User Pain Points] --> G3["😔 **Ví dụ:** "]
-    end
-
     B1 --> B2 --> B3
     B2 --> RCA
 
     %% Connect Subgraphs in Order
-    Problem_Framing --> A1 --> A2 --> A3
+    Problem_Framing --> A1
