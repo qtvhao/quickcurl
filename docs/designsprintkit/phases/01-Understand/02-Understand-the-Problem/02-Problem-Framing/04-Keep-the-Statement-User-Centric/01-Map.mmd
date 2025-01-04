@@ -1,0 +1,20 @@
+flowchart TD
+
+    Design_Sprint(🚀 Start Design Sprint) --> Understand["🧠 Understand"]
+
+    Understand --> Problem_Framing["🔍 Problem Framing"]
+
+    A1[📝 Define the Problem Clearly 💡]
+
+    %% Focus on a Single Problem
+    A2[🎯 Focus on a Single Problem 🎯]
+
+    %% Keep the Statement User-Centric
+    subgraph A3[👤 Keep the Statement User-Centric 💬]
+        D1[📢 Use User Feedback] --> G1["🗣️ **Ví dụ:** Người dùng muốn dùng thử nghiệm để build channel youtube cho công ty của họ (công ty làm IT) 💬✅"]
+        D2[❓ Ask User-Focused Questions] --> G2["🤔 **Ví dụ:** Người dùng thường gặp khó khăn ở bước nào khi thao tác trên nền tảng?"]
+        D3[❤️ Empathize with User Pain Points] --> G3["😔 **Ví dụ:** "]
+    end
+
+    %% Connect Subgraphs in Order
+    Problem_Framing --> A1 --> A2 --> A3
