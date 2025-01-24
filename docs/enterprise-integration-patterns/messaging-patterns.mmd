@@ -1,0 +1,14 @@
+graph TD
+    A[Transaction Request Channel<br>**Tin nhắn ban đầu**: Yêu cầu chuyển tiền] -->|Incoming Message| B[Message Filter<br>**Kiểm tra hợp lệ**: Số dư, thông tin tài khoản]
+    B -->|Valid Message| C[Message Splitter<br>**Phân tách**: Tạo các bước xử lý]
+    B -->|Invalid Message| DeadLetter[Dead Letter Channel<br>**Lưu lỗi**: Giao dịch không hợp lệ]
+    C -->|Step 1: Deduct Money| D[Deduct Channel<br>**Trừ tiền**: Giảm số dư tài khoản người gửi]
+    C -->|Step 2: Credit Money| E[Credit Channel<br>**Cộng tiền**: Tăng số dư tài khoản người nhận]
+    C -->|Step 3: Send Notification| F[Notification Channel<br>**Thông báo**: Gửi kết quả đến người dùng]
+    D -->|Result: Success/Failure| G[Aggregator<br>**Tổng hợp**: Kết quả từ tất cả các bước]
+    E -->|Result: Success/Failure| G
+    F -->|Notification Sent| G
+    G -->|Final Status<br>**Giao dịch hoàn tất**: Thành công/Thất bại| H[Transaction Complete<br>**Kết thúc giao dịch**]
+    D -->|Error<br>**Lỗi khi trừ tiền**| DeadLetter
+    E -->|Error<br>**Lỗi khi cộng tiền**| DeadLetter
+    F -->|Error<br>**Lỗi gửi thông báo**| DeadLetter
