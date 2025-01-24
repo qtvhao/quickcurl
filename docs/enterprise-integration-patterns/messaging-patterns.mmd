@@ -1,3 +1,11 @@
+%%{
+  init: {
+    'theme': 'default',
+    'themeVariables': {
+      'fontFamily': 'Arial'
+    }
+  }
+}%%
 graph TD
     A[Transaction Request Channel<br>**Tin nhắn ban đầu**: Yêu cầu chuyển tiền] -->|Incoming Message| B[Message Filter<br>**Kiểm tra hợp lệ**: Số dư, thông tin tài khoản]
     B -->|Valid Message| C[Message Splitter<br>**Phân tách**: Tạo các bước xử lý]
