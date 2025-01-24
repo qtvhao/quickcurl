@@ -1,0 +1,3 @@
+#!/bin/bash
+
+npx -p @mermaid-js/mermaid-cli mmdc -i $1  -e png -w 7680 -H 4320 -p puppeteer.json
